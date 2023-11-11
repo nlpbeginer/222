@@ -1,0 +1,285 @@
+{% extends "base.html" %}
+
+{% block title %}Conference Management{% endblock %}
+
+{% load static %}
+
+{% block css %}
+<link href="{% static 'assets/plugins/flatpickr/flatpickr.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+<div class="app full-width-header align-content-stretch d-flex flex-wrap">
+    {% include "sidebar.html" %}
+    <div class="app-container">
+        <div class="app-header">
+            <nav class="navbar navbar-light navbar-expand-lg">
+                <div class="container-fluid">
+                    <div class="navbar-nav" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">first_page</i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex">
+                        <ul class="navbar-nav">
+                            <li class="nav-item hidden-on-mobile">
+                                <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown">
+                                    <button class="btn btn-outline-primary btn-rounded">用户1</button>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
+                                    <li><a class="dropdown-item" href="#">注销</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="app-content">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="page-description">
+                                <h1>会议列表</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="card-title">我的会议申请</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="example-container">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">简称</th>
+                                                    <th scope="col">全称</th>
+                                                    <th scope="col">举办时间</th>
+                                                    <th scope="col">举办地点</th>
+                                                    <th scope="col">投稿截止</th>
+                                                    <th scope="col">状态</th>
+                                                    <th scope="col">操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>ICSE 2020</td>
+                                                    <td>The 42nd International Conference on Software Engineering</td>
+                                                    <td>2020.05.11</td>
+                                                    <td>Seoul, South Korea</td>
+                                                    <td>2019.08.10</td>
+                                                    <td>已通过</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success">开启会议</button>
+                                                        <button type="button" class="btn btn-primary m-b-sm" data-bs-toggle="modal"
+                                                                data-bs-target="#invite_pc_model">邀请PC
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <h5 class="card-title">会议列表</h5>
+                                        </div>
+                                        <div class="col-2">
+                                            <button type="button" class="btn btn-primary m-b-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#add_confer_model">
+                                                <i class="material-icons">add</i>会议申请
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="example-container">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">简称</th>
+                                                    <th scope="col">全称</th>
+                                                    <th scope="col">举办时间</th>
+                                                    <th scope="col">举办地点</th>
+                                                    <th scope="col">投稿截止</th>
+                                                    <th scope="col">状态</th>
+                                                    <th scope="col">操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>ICSE 2020</td>
+                                                    <td>The 42nd International Conference on Software Engineering</td>
+                                                    <td>2020.05.11</td>
+                                                    <td>Seoul, South Korea</td>
+                                                    <td>2019.08.10</td>
+                                                    <td>已通过</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-dark" onclick="window.location.href='/submit';">投稿
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Vertically centered modal -->
+<div class="modal fade" id="add_confer_model" tabindex="-1" aria-labelledby="addConferModelTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addConferModelTitle">新增会议</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row mb-3">
+                        <label for="input_confer_abbre" class="col-sm-2 col-form-label">会议简称</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="input_confer_abbre">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="input_confer_full" class="col-sm-2 col-form-label">会议全称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input_confer_full">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="input_held_time" class="col-sm-2 col-form-label">举办时间</label>
+                        <div class="col-sm-10">
+                            <input class="form-control flatpickr2" type="text" id="input_held_time" placeholder="Select Time..">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="input_held_locate" class="col-sm-2 col-form-label">举办地点</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="input_held_locate">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="input_submit_ddl" class="col-sm-2 col-form-label">投稿截止日期</label>
+                        <div class="col-sm-10">
+                            <input class="form-control flatpickr2" type="text" id="input_submit_ddl" placeholder="Select Time..">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="invite_pc_model" tabindex="-1" aria-labelledby="invitePCModelTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="invitePCModelTitle">新增会议</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">选取</th>
+                            <th scope="col">用户名</th>
+                            <th scope="col">邮箱</th>
+                            <th scope="col">区域</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>
+                                <input type="checkbox" name="checked_items" value="{{ item.id }}">
+                            </td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>
+                                <input type="checkbox" name="checked_items" value="{{ item.id }}">
+                            </td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>
+                                <input type="checkbox" name="checked_items" value="{{ item.id }}">
+                            </td>
+                            <td>Larry the Bird</td>
+                            <td>@twitter</td>
+                            <td>fat</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-primary">邀请</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script src="{% static 'assets/plugins/flatpickr/flatpickr.js' %}"></script>
+<script>
+    $(".flatpickr2").flatpickr({
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+    });
+</script>
+
+{% endblock %}
+

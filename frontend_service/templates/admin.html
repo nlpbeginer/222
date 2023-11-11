@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}管理员后台管理{% endblock %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="app full-width-header align-content-stretch d-flex flex-wrap">
+    <div class="app-sidebar">
+        <div class="logo logo-sm">
+            <a href="">ConferenceManage</a>
+        </div>
+        <div class="app-menu">
+            <ul class="accordion-menu">
+                <li class="sidebar-title">
+                    应用
+                </li>
+                <li>
+                    <a href=""><i class="material-icons-two-tone">dashboard</i>会议审核</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="app-container">
+        <div class="app-header">
+            <nav class="navbar navbar-light navbar-expand-lg">
+                <div class="container-fluid">
+                    <div class="navbar-nav" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">first_page</i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex">
+                        <ul class="navbar-nav">
+                            <li class="nav-item hidden-on-mobile">
+                                <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown">
+                                    <button class="btn-outline-primary">用户</button>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
+                                    <li><a class="dropdown-item" href="#">注销</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item hidden-on-mobile">
+                                <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown">4</a>
+                                <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">
+                                    <h6 class="dropdown-header">Notifications</h6>
+                                    <div class="notifications-dropdown-list">
+                                        <a href="#">
+                                            <div class="notifications-dropdown-item">
+                                                <div class="notifications-dropdown-item-image">
+                                                        <span class="notifications-badge bg-info text-white">
+                                                            <i class="material-icons-outlined">campaign</i>
+                                                        </span>
+                                                </div>
+                                                <div class="notifications-dropdown-item-text">
+                                                    <p class="bold-notifications-text">Donec tempus nisi sed erat vestibulum, eu suscipit ex
+                                                        laoreet</p>
+                                                    <small>19:00</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div class="notifications-dropdown-item">
+                                                <div class="notifications-dropdown-item-image">
+                                                        <span class="notifications-badge bg-danger text-white">
+                                                            <i class="material-icons-outlined">bolt</i>
+                                                        </span>
+                                                </div>
+                                                <div class="notifications-dropdown-item-text">
+                                                    <p class="bold-notifications-text">Quisque ligula dui, tincidunt nec pharetra eu, fringilla quis
+                                                        mauris</p>
+                                                    <small>18:00</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#">
+                                            <div class="notifications-dropdown-item">
+                                                <div class="notifications-dropdown-item-image">
+                                                        <span class="notifications-badge bg-success text-white">
+                                                            <i class="material-icons-outlined">alternate_email</i>
+                                                        </span>
+                                                </div>
+                                                <div class="notifications-dropdown-item-text">
+                                                    <p>Nulla id libero mattis justo euismod congue in et metus</p>
+                                                    <small>yesterday</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="app-content">
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="page-description">
+                                <h1>会议审核</h1>
+                                <!--                                <span>Header without spacing to sidebar and page edges. <div class="alert alert-secondary m-t-lg" role="alert">Note! Logo block with user info in it is not compatible with full-width header.</div></span>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">会议列表</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-description">请对下列会议进行审核操作</p>
+                                    <div class="example-container">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">简称</th>
+                                                    <th scope="col">全称</th>
+                                                    <th scope="col">举办时间</th>
+                                                    <th scope="col">举办地点</th>
+                                                    <th scope="col">投稿截止</th>
+                                                    <th scope="col">状态</th>
+                                                    <th scope="col">操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>ICSE 2020</td>
+                                                    <td>The 42nd International Conference on Software Engineering</td>
+                                                    <td>2020.05.11</td>
+                                                    <td>Seoul, South Korea</td>
+                                                    <td>2019.08.10</td>
+                                                    <td>待审核</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success">通过</button>
+                                                        <button type="button" class="btn btn-danger">拒绝</button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
